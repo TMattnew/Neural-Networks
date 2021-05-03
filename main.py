@@ -164,8 +164,58 @@ for i in range(100000):
 
         if j == 0:
             print(demonstration_error(expected_output, fith_layer_output), "\n    <-    \n", input_vector, "\n\n")
+
         if i % 1 == 0:
             result.append(demonstration_error(expected_output, fith_layer_output)[0][0])
+
+        if i == 0:
+            np.savez('L0.npz',
+                     first_layer_matrix=first_layer_matrix, first_bias_matrix=first_bias_matrix,
+                     second_layer_matrix=second_layer_matrix, second_bias_matrix=second_bias_matrix,
+                     third_layer_matrix=third_layer_matrix, third_bias_matrix=third_bias_matrix,
+                     fourth_layer_matrix=fourth_layer_matrix, fourth_bias_matrix=fourth_bias_matrix,
+                     fith_layer_matrix=fith_layer_matrix, fith_bias_matrix=fith_bias_matrix)
+
+        if i == 10:
+            np.savez('L10.npz',
+                     first_layer_matrix=first_layer_matrix, first_bias_matrix=first_bias_matrix,
+                     second_layer_matrix=second_layer_matrix, second_bias_matrix=second_bias_matrix,
+                     third_layer_matrix=third_layer_matrix, third_bias_matrix=third_bias_matrix,
+                     fourth_layer_matrix=fourth_layer_matrix, fourth_bias_matrix=fourth_bias_matrix,
+                     fith_layer_matrix=fith_layer_matrix, fith_bias_matrix=fith_bias_matrix)
+
+        if i == 100:
+            np.savez('L100.npz',
+                     first_layer_matrix=first_layer_matrix, first_bias_matrix=first_bias_matrix,
+                     second_layer_matrix=second_layer_matrix, second_bias_matrix=second_bias_matrix,
+                     third_layer_matrix=third_layer_matrix, third_bias_matrix=third_bias_matrix,
+                     fourth_layer_matrix=fourth_layer_matrix, fourth_bias_matrix=fourth_bias_matrix,
+                     fith_layer_matrix=fith_layer_matrix, fith_bias_matrix=fith_bias_matrix)
+
+        if i == 1000:
+            np.savez('L1k.npz',
+                     first_layer_matrix=first_layer_matrix, first_bias_matrix=first_bias_matrix,
+                     second_layer_matrix=second_layer_matrix, second_bias_matrix=second_bias_matrix,
+                     third_layer_matrix=third_layer_matrix, third_bias_matrix=third_bias_matrix,
+                     fourth_layer_matrix=fourth_layer_matrix, fourth_bias_matrix=fourth_bias_matrix,
+                     fith_layer_matrix=fith_layer_matrix, fith_bias_matrix=fith_bias_matrix)
+
+        if i == 10000:
+            np.savez('L10k.npz',
+                     first_layer_matrix=first_layer_matrix, first_bias_matrix=first_bias_matrix,
+                     second_layer_matrix=second_layer_matrix, second_bias_matrix=second_bias_matrix,
+                     third_layer_matrix=third_layer_matrix, third_bias_matrix=third_bias_matrix,
+                     fourth_layer_matrix=fourth_layer_matrix, fourth_bias_matrix=fourth_bias_matrix,
+                     fith_layer_matrix=fith_layer_matrix, fith_bias_matrix=fith_bias_matrix)
+
+        if i == 100000:
+            np.savez('L100k.npz',
+                     first_layer_matrix=first_layer_matrix, first_bias_matrix=first_bias_matrix,
+                     second_layer_matrix=second_layer_matrix, second_bias_matrix=second_bias_matrix,
+                     third_layer_matrix=third_layer_matrix, third_bias_matrix=third_bias_matrix,
+                     fourth_layer_matrix=fourth_layer_matrix, fourth_bias_matrix=fourth_bias_matrix,
+                     fith_layer_matrix=fith_layer_matrix, fith_bias_matrix=fith_bias_matrix)
+
 
 
 
@@ -202,12 +252,11 @@ for i in range(100000):
     # print(error(expected_output, third_layer_output))
 
 
-np.savez('L100k.npz',
-         first_layer_matrix=first_layer_matrix, first_bias_matrix=first_bias_matrix,
-         second_layer_matrix=second_layer_matrix, second_bias_matrix=second_bias_matrix,
-         third_layer_matrix=third_layer_matrix, third_bias_matrix=third_bias_matrix,
-         fourth_layer_matrix=fourth_layer_matrix, fourth_bias_matrix=fourth_bias_matrix,
-         fith_layer_matrix=fith_layer_matrix, fith_bias_matrix=fith_bias_matrix)
+
+
+
+
+
 
 
 plt.plot(result)

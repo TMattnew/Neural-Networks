@@ -28,7 +28,7 @@ data = data_generator()
 input_vector = data[0]
 expected_output = data[1]
 
-with np.load('L100k.npz') as matrices:
+with np.load('L0.npz') as matrices:
     first_layer_matrix = matrices['first_layer_matrix']
 
     first_bias_matrix = matrices['first_bias_matrix']
@@ -76,10 +76,10 @@ fourth_layer_output = ReLU(fourth_layer_output_UR)
 fith_layer_output = np.matmul(fith_layer_matrix, fourth_layer_output) + fith_bias_matrix
 
 l = []
-for i in range(1000):
+for i in range(100):
     l.append([])
-    for j in range(1000):
-        input_vector = np.array([[i/100], [j/100]])
+    for j in range(100):
+        input_vector = np.array([[i/10], [j/10]])
         first_layer_output_UR = np.matmul(first_layer_matrix, input_vector) + first_bias_matrix
 
         first_layer_output = ReLU(first_layer_output_UR)
@@ -99,8 +99,8 @@ for i in range(1000):
         fith_layer_output = np.matmul(fith_layer_matrix, fourth_layer_output) + fith_bias_matrix
 
 
-        l[i].append(demonstration_error(i*j/10000, fith_layer_output[0][0]))
-        print('i, j = ', i, ', ', j, ' ERROR = ', demonstration_error(i*j/10000, fith_layer_output[0][0]))
+        l[i].append(demonstration_error(i*j/100, fith_layer_output[0][0]))
+        print('i, j = ', i, ', ', j, ' ERROR = ', demonstration_error(i*j/100, fith_layer_output[0][0]))
 
 l = np.array(l)
 

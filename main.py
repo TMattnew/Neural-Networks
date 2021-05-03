@@ -45,34 +45,34 @@ def ReLU_der(v):
 
 
 
-first_layer_matrix = np.random.rand(16, 2) - 0.5 * np.ones((16, 2))
+first_layer_matrix = ((np.random.rand(16, 2) - 0.5 * np.ones((16, 2))) / sqrt(2/2)) * 1/2
 
-first_bias_matrix = np.random.rand(16, 1) - 0.5 * np.ones((16, 1))
-
-
-second_layer_matrix = np.random.rand(16, 16) - 0.5 * np.ones((16, 16))
-
-second_bias_matrix = np.random.rand(16, 1) - 0.5 * np.ones((16, 1))
+first_bias_matrix = ((np.random.rand(16, 1) - 0.5 * np.ones((16, 1))) / sqrt(2/2)) * 1/2
 
 
-third_layer_matrix = np.random.rand(8, 16) - 0.5 * np.ones((8, 16))
+second_layer_matrix = ((np.random.rand(16, 16) - 0.5 * np.ones((16, 16))) / sqrt(16/2)) * 15/16
 
-third_bias_matrix = np.random.rand(8, 1) - 0.5 * np.ones((8, 1))
-
-
-fourth_layer_matrix = np.random.rand(8, 8) - 0.5 * np.ones((8, 8))
-
-fourth_bias_matrix = np.random.rand(8, 1) - 0.5 * np.ones((8, 1))
+second_bias_matrix = ((np.random.rand(16, 1) - 0.5 * np.ones((16, 1))) / sqrt(16/2)) * 1/16
 
 
-fith_layer_matrix = np.random.rand(1, 8) - 0.5 * np.ones((1, 8))
-fith_bias_matrix = np.random.rand(1, 1) - 0.5 * np.ones((1, 1))
+third_layer_matrix = ((np.random.rand(8, 16) - 0.5 * np.ones((8, 16))) / sqrt(16/2)) * 15/16
+
+third_bias_matrix = ((np.random.rand(8, 1) - 0.5 * np.ones((8, 1))) / sqrt(16/2)) * 1/16
+
+
+fourth_layer_matrix = ((np.random.rand(8, 8) - 0.5 * np.ones((8, 8))) / sqrt(8/2)) * 7/8
+
+fourth_bias_matrix = ((np.random.rand(8, 1) - 0.5 * np.ones((8, 1))) / sqrt(8/2)) * 1/8
+
+
+fith_layer_matrix = ((np.random.rand(1, 8) - 0.5 * np.ones((1, 8))) / sqrt(1/2)) * 1/2
+fith_bias_matrix = ((np.random.rand(1, 1) - 0.5 * np.ones((1, 1))) / sqrt(1/2)) * 1/2
 
 
 
 
 result = []
-L = 0.0000005  # LEARNING RATE
+L = 0.00005  # LEARNING RATE
 FRIC = 0.7  # 1 - Friction coefficient
 
 prev_first_matrix_grad = 0
@@ -87,7 +87,7 @@ prev_fith_matrix_grad = 0
 prev_fith_bias_grad = 0
 
 
-for i in range(1000000):
+for i in range(100000):
     first_matrix_grad = 0
     first_bias_grad = 0
     second_matrix_grad = 0
@@ -201,10 +201,14 @@ for i in range(1000000):
     # print(error_derivative(expected_output, third_layer_output))
     # print(error(expected_output, third_layer_output))
 
+
+np.savez('L100k.npz',
+         first_layer_matrix=first_layer_matrix, first_bias_matrix=first_bias_matrix,
+         second_layer_matrix=second_layer_matrix, second_bias_matrix=second_bias_matrix,
+         third_layer_matrix=third_layer_matrix, third_bias_matrix=third_bias_matrix,
+         fourth_layer_matrix=fourth_layer_matrix, fourth_bias_matrix=fourth_bias_matrix,
+         fith_layer_matrix=fith_layer_matrix, fith_bias_matrix=fith_bias_matrix)
+
+
 plt.plot(result)
 plt.show()
-
-
-# with open("results.txt", "w") as f:
-#     f.write(str(result))
-
